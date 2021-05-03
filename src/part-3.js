@@ -11,6 +11,7 @@ class Part3 extends Component {
             </div>
         );
     }
+    /* содержимое блока */
 }
 
 export default Part3;

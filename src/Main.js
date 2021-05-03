@@ -11,7 +11,6 @@ class Main extends Component {
         return (
             <HashRouter>
             <div>
-                <h1>Знакомство</h1>
                 <ul className="header">
                     <li><NavLink exact to="/part1">Блок 1</NavLink></li>
                     <li><NavLink to="/part2">Блок 2</NavLink></li>
