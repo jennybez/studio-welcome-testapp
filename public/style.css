@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Bandera Pro Bold';
+    src: url('BanderaPro-Bold.eot');
+    src: url('BanderaPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('BanderaPro-Bold.woff') format('woff'),
+    url('BanderaPro-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    header
+    {
+        width: 1200px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        color: #666666;
+        text-align: right;
+        margin: auto;
+    }
+
+.number
+{
+    font-family: 'Bandera Pro Bold';
+    font-size: 24px;
+}
+
+body
+{
+background: url(back.png) ;
+}
