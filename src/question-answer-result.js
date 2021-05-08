@@ -1,33 +1,33 @@
 
 class Question 
 {
- constructor(text)
+ constructor(text,answers)
  {
     this.text=text;
- }
- makeQuest() // создание вопроса и вывод его на экран
- {
-    alert(this.text)
+    this.answers=answers;
  }
 }
 class Answer
 {
-   constructor(text)
+   constructor(text,numQuest)
    {
       this.text = text;
+      this.numQuest=numQuest;
    }
-   constructor (text,media)
+   constructor (text,media,numQuest)
    {
       this.text=text;
       this.media=media;
-       
+      this.numQuest=numQuest;
    }
-   mediaAnswer(textAnsw,mediaAnsw)
+   mediaAnswer(textAnsw,mediaAnsw,ind)
    {
       /*реализация генерации кнопки-картинки с полем объяснения ниже (+анимированные прямоугольники) */
    }
-   simpleAnswer(textAnsw)
+   simpleAnswer(textAnsw,ind)
    {
+     textAnsw=this.text;
+   
       /*реализация генерации кнопки в виде текста на выбор */
    }
 }
