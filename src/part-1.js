@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 class Part1 extends Component {
     render() {
-        
         return (
             <div>
                 <h2>Блок 1. Знакомство</h2>
