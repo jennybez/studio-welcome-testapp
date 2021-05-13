@@ -1,104 +1,189 @@
-import React, {Component} from 'react';
-import "survey-react/survey.css";
+import React, { Component } from "react";
+
 import * as Survey from "survey-react";
-class App extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
+import * as SurveyPDF from "survey-pdf";
 
-        }
-        this.onCompleteComponent = this.onCompleteComponent.bind(this)
+import "survey-react/modern.css";
+import "./index.css";
+
+
+class SurveyPdfComponent extends Component {
+    constructor() {
+        super();
+        
     }
-    onCompleteComponent = () => {
-        this.setState ({
-            isCompleted: true
-        })
+    render() {
+        
+
+        Survey.StylesManager.applyTheme("modern");
+
+        const json = {
+  "questions": [
+    {
+      "type": "text",
+      "title": "Bottom description",
+      "name": "pdf_adorners_bottomdesc"
+    },
+    {
+      "type": "checkbox",
+      "title": "Render checkbox question as radiogroup",
+      "name": "pdf_adorners_checkboxasradio",
+      "choices": [ "A", "B" ]
+    },
+    {
+      "type": "matrix",
+      "title": "Change size of question",
+      "name": "pdf_adorners_changesize",
+      "columns": [
+        "Column 1",
+        "Column 2",
+        "Column 3"
+      ],
+      "rows": [
+        "Row 1",
+        "Row 2"
+      ]
+    },
+    {
+      "type": "comment",
+      "title": "Render comment question as html",
+      "name": "pdf_adorners_commentashtml",
+      "defaultValue": "Sed venenatis nisl mi, eget lobortis augue venenatis ac.\n\nUt consectetur, nunc a tristique tempor, enim neque porttitor urna, non accumsan diam sem at erat. Suspendisse in sapien ac ligula aliquam porta a eu lorem"
+    },
+    {
+      "type": "tagbox",
+      "title": "Render only selected choices loaded via choicesByUrl",
+      "name": "pdf_adorners_selectedchoices",
+      "choicesByUrl": {
+        "url": "https://restcountries.eu/rest/v2/all"
+      },
+      "defaultValue": ["Bhutan", "Chad", "France"]
     }
-   render () {
-    var json ={
-        "title": "question3",
-        "pages": [
-         {
-          "name": "page1",
-          "elements": [
-           {
-            "type": "imagepicker",
-            "name": "question1",
-            "isRequired": true,
-            "hasComment": true,
-            "commentText": "some comment",
-            "choices": [
-             {
-              "value": "lion",
-              "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/lion.jpg"
-             },
-             {
-              "value": "giraffe",
-              "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/giraffe.jpg"
-             },
-             {
-              "value": "panda",
-              "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/panda.jpg"
-             },
-             {
-              "value": "camel",
-              "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/camel.jpg"
-             }
-            ]
-           },
-           {
-            "type": "radiogroup",
-            "name": "question4",
-            "choices": [
-             "item1",
-             "item2",
-             "item3"
-            ]
-           }
-          ]
-         },
-         {
-          "name": "page2",
-          "elements": [
-           {
-            "type": "dropdown",
-            "name": "question2",
-            "choices": [
-             "item1",
-             "item2",
-             "item3"
-            ]
-           },
-           {
-            "type": "signaturepad",
-            "name": "question3"
-           }
-          ]
-         }
-        ]
-       };
-       var surveyRender = !this.state.isCompleted ? (
-           <Survey.Survey
-           json={json}
-           showCompletedPage = {false}
-           onComplete = {this.onCompleteComponent}
+  ]
+};
+const survey = new Survey.Model(json);
 
-           />
-       ) : null
-       var onSurveyCompletion = this.state.isCompleted ? (
-           <div>
-               Пасиб что прошли опрос
-           </div>
-       ) : null;
-    return (
-        <div className="App">
-            <div>
-                {surveyRender}
-                {onSurveyCompletion}
+        
 
-            </div>
-        </div>
-    );
+        function saveSurveyToPdf(filename, surveyModel, pdfWidth, pdfHeight) {
+   var options = {
+        format: [pdfWidth, pdfHeight]
+    };
+    var surveyPDF = new SurveyPDF.SurveyPDF(json, options);
+    surveyPDF.data = surveyModel.data;
+    surveyPDF.onRenderQuestion.add(function (survey, options) {
+        if (options.question.name !== "pdf_adorners_bottomdesc") return;
+        var plainBricks = options.bricks[0].unfold();
+        var lastBrick = plainBricks[plainBricks.length - 1];
+        var point = SurveyPDF.SurveyHelper.createPoint(lastBrick);
+        return new Promise(function (resolve) {
+            SurveyPDF.SurveyHelper.createDescFlat(point, options.question,
+                options.controller, 'Some description').then(function (descBrick) {
+                options.bricks.push(descBrick);
+                resolve();
+            });
+        });
+    });
+    surveyPDF.onRenderQuestion.add(function (survey, options) {
+        if (options.question.name !== "pdf_adorners_checkboxasradio") return;
+        var flatRadiogroup = options.repository.create(survey,
+            options.question, options.controller, "radiogroup");
+        return new Promise(function (resolve) {
+            flatRadiogroup.generateFlats(options.point).then(function(radioBricks) {
+                options.bricks = radioBricks;
+                resolve();
+            });
+        });
+     });
+    surveyPDF
+        .onRenderQuestion
+        .add(function (survey, options) {
+            if (options.question.name !== "pdf_adorners_changesize") return;
+            var flatMatrix = options
+                .repository
+                .create(survey, options.question, options.controller, "matrix");
+            var oldFontSize = options.controller.fontSize;
+            options.controller.fontSize = oldFontSize / 2.0;
+            return new Promise(function (resolve) {
+                flatMatrix
+                    .generateFlats(options.point)
+                    .then(function (matrixBricks) {
+                        options.controller.fontSize = oldFontSize;
+                        options.bricks = matrixBricks;
+                        resolve();
+                    });
+            });
+        });
+    surveyPDF
+        .onRenderQuestion
+        .add(function (survey, options) {
+            if (options.question.getType() === "comment") {
+                var htmlQuestion = Survey.QuestionFactory.Instance.createQuestion("html", "html_question");
+                var paragraphs = options.question.value.split("\n");
+                htmlQuestion.html = "";
+                paragraphs.forEach(function(p) { htmlQuestion.html += "<p>" + p + "</p><br>" });
+                var flatHtml = options
+                    .repository
+                    .create(survey, htmlQuestion, options.controller, "html");
+                var commentBricks = options.bricks[0].unfold();
+                var commentBrick = commentBricks.pop();
+                var point = SurveyPDF.SurveyHelper.createPoint(commentBrick, true, true);
+                return new Promise(function (resolve) {
+                    flatHtml
+                        .generateFlats(point)
+                        .then(function (htmlBricks) {
+                            options.bricks = commentBricks;
+                            options.bricks = options.bricks.concat(htmlBricks);
+                            resolve();
+                        });
+                });
+            }
+        });
+    surveyPDF
+        .onRenderQuestion
+        .add(function (survey, options) {
+            if (options.question.name !== "pdf_adorners_selectedchoices") return;
+            var checkboxQuestion = Survey.QuestionFactory.Instance.createQuestion('checkbox', options.question.name + '_checkbox');
+            checkboxQuestion.titleLocation = 'hidden';
+            var selectedChoices = [];
+            options.question.visibleChoices.forEach(function (choice) {
+                if (options.question.isItemSelected(choice)) {
+                    selectedChoices.push(choice.value);
+                }
+            });
+            checkboxQuestion.choices = selectedChoices;
+            var flatCheckbox = options.repository.create(survey, checkboxQuestion, options.controller, 'checkbox');
+            var titleBrick = options.bricks[0].unfold();
+            titleBrick.pop(); titleBrick.pop();
+            titleBrick = new options.module.CompositeBrick(...titleBrick);
+            var point = options.module.SurveyHelper.createPoint(titleBrick, true, false);
+            point.yTop += options.controller.unitHeight / 2.0;
+            return new Promise(function (resolve) {
+                flatCheckbox
+                    .generateFlats(point)
+                    .then(function (checkboxBricks) {
+                        options.bricks = [titleBrick];
+                        options.bricks = options.bricks.concat(checkboxBricks);
+                        resolve();
+                    });
+            });
+        });
+    surveyPDF.save(filename);
+}
+document.getElementById("saveToPDFbtn").onclick = function() {
+  var pdfWidth = survey.pdfWidth || 210;
+  var pdfHeight = survey.pdfHeight || 297;
+  saveSurveyToPdf("surveyResult.pdf", survey, pdfWidth, pdfHeight);
+};
+
+        if (typeof survey === "undefined") return <div></div>;
+
+        return (
+            <Survey.Survey
+                model={survey}
+            />
+        );
     }
 }
-export default App;
+
+export default SurveyPdfComponent;

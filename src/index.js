@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import SurveyPdfComponent from './App';
 
 ReactDOM.render(
     <div>
-    <App/>
+    <SurveyPdfComponent/>
     </div>,
     document.getElementById('root')
 );
