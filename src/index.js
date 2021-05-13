@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import SurveyPdfComponent from './App';
 
 ReactDOM.render(

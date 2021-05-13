@@ -5,7 +5,8 @@ import * as SurveyPDF from "survey-pdf";
 
 import "survey-react/modern.css";
 import "./index.css";
-
+import "./send-mail.js";
+import sendPDFToMail from "./send-mail.js";
 
 class SurveyPdfComponent extends Component {
     constructor() {
@@ -23,7 +24,7 @@ class SurveyPdfComponent extends Component {
       "type": "text",
       "title": "Bottom description",
       "name": "pdf_adorners_bottomdesc"
-    },
+    }, 
     {
       "type": "checkbox",
       "title": "Render checkbox question as radiogroup",
@@ -174,6 +175,7 @@ document.getElementById("saveToPDFbtn").onclick = function() {
   var pdfWidth = survey.pdfWidth || 210;
   var pdfHeight = survey.pdfHeight || 297;
   saveSurveyToPdf("surveyResult.pdf", survey, pdfWidth, pdfHeight);
+  // тут д.б. отправка на почту
 };
 
         if (typeof survey === "undefined") return <div></div>;
