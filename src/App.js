@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
+
 import * as Survey from "survey-react";
 import * as SurveyPDF from "survey-pdf";
 
+
+
 import "survey-react/modern.css";
 import "./index.css";
-import "./send-mail.js";
-import sendPDFToMail from "./send-mail.js";
+
 
 class SurveyPdfComponent extends Component {
     constructor() {
@@ -19,164 +21,1673 @@ class SurveyPdfComponent extends Component {
         Survey.StylesManager.applyTheme("modern");
 
         const json = {
-  "questions": [
-    {
-      "type": "text",
-      "title": "Bottom description",
-      "name": "pdf_adorners_bottomdesc"
-    }, 
-    {
-      "type": "checkbox",
-      "title": "Render checkbox question as radiogroup",
-      "name": "pdf_adorners_checkboxasradio",
-      "choices": [ "A", "B" ]
-    },
-    {
-      "type": "matrix",
-      "title": "Change size of question",
-      "name": "pdf_adorners_changesize",
-      "columns": [
-        "Column 1",
-        "Column 2",
-        "Column 3"
-      ],
-      "rows": [
-        "Row 1",
-        "Row 2"
-      ]
-    },
-    {
-      "type": "comment",
-      "title": "Render comment question as html",
-      "name": "pdf_adorners_commentashtml",
-      "defaultValue": "Sed venenatis nisl mi, eget lobortis augue venenatis ac.\n\nUt consectetur, nunc a tristique tempor, enim neque porttitor urna, non accumsan diam sem at erat. Suspendisse in sapien ac ligula aliquam porta a eu lorem"
-    },
-    {
-      "type": "tagbox",
-      "title": "Render only selected choices loaded via choicesByUrl",
-      "name": "pdf_adorners_selectedchoices",
-      "choicesByUrl": {
-        "url": "https://restcountries.eu/rest/v2/all"
-      },
-      "defaultValue": ["Bhutan", "Chad", "France"]
-    }
-  ]
-};
+          
+            
+                "locale": "ru",
+                "pages": [
+                 {
+                  "name": "page1",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question8",
+                    "title": {
+                     "ru": "Блок 1: Знакомство "
+                    },
+                    "titleLocation": "top",
+                    "description": {
+                     "ru": "В этом блоке важно пройти все задания"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question1",
+                    "title": {
+                     "ru": "ФИО (обоих супругов)"
+                    },
+                    "isRequired": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question2",
+                    "title": {
+                     "ru": "Контактные данные (обоих супругов): телефон, WhatsApp, e-mail"
+                    },
+                    "isRequired": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question3",
+                    "title": {
+                     "ru": "Адрес объекта"
+                    },
+                    "isRequired": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question4",
+                    "title": {
+                     "ru": "Количество членов семьи, дети (пол и возраст)"
+                    },
+                    "isRequired": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question5",
+                    "title": {
+                     "ru": "Животные"
+                    },
+                    "isRequired": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question6",
+                    "title": {
+                     "ru": "Кто принимает решение в утверждении будущего интерьера?"
+                    },
+                    "isRequired": true
+                   },
+                   {
+                    "type": "rating",
+                    "name": "question7",
+                    "title": {
+                     "ru": "Предполагаемый бюджет (руб.)"
+                    },
+                    "isRequired": true,
+                    "hasComment": true,
+                    "rateMin": 1500000,
+                    "rateMax": 15000000,
+                    "rateStep": 250000
+                   }
+                  ],
+                  "title": "Студия дизайна Homm приветствует Вас!",
+                  "description": {
+                   "ru": "Давайте узнаем друг друга получше. Так мы сможем понять ваши требования и предпочтения по будущему дизайну. Пожалуйста, пройдите все блоки заданий. Спасибо! "
+                  }
+                 },
+                 {
+                  "name": "page2",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question9",
+                    "title": {
+                     "ru": "Блок 2: Определение типа личности и Вашего образа жизни"
+                    },
+                    "description": {
+                     "ru": "Это необходимо для подбора соответствующего стиля мебели, яркости, разнообразия или монотонности будущего дизайна"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question10",
+                    "title": {
+                     "ru": "Вы экстраверт или интроверт?"
+                    }
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question11",
+                    "title": {
+                     "ru": "Какой тип темперамента характеризует вас наибольшим образом?"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Можете добавить что-нибудь здесь:"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Холерик"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Сангвиник"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Флегматик"
+                      }
+                     },
+                     {
+                      "value": "item4",
+                      "text": {
+                       "ru": "Меланхолик"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question12",
+                    "title": {
+                     "ru": "Какая у вас профессия /сфера деятельности?"
+                    }
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question13",
+                    "title": {
+                     "ru": "Вы левша или правша?"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Левша"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Правша"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question14",
+                    "title": {
+                     "ru": "Часто ли приходят гости?"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Часто"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "По праздникам"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Редко"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question15",
+                    "title": {
+                     "ru": "Вы сова или жаворонок?"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Можете добавить что-нибудь здесь:"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Сова"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Жаворонок"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "imagepicker",
+                    "name": "question16",
+                    "title": {
+                     "ru": "Что представляет из себя Ваш объект?"
+                    },
+                    "isRequired": true,
+                    "choices": [
+                     {
+                      "value": "lion",
+                      "text": {
+                       "ru": "Квартира"
+                      },
+                      "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/lion.jpg"
+                     },
+                     {
+                      "value": "giraffe",
+                      "text": {
+                       "ru": "Таунхаус"
+                      },
+                      "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/giraffe.jpg"
+                     },
+                     {
+                      "value": "panda",
+                      "text": {
+                       "ru": "Дом/коттедж"
+                      },
+                      "imageLink": "https://surveyjs.io/Content/Images/examples/image-picker/panda.jpg"
+                     }
+                    ],
+                    "showLabel": true
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page3",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question17",
+                    "title": {
+                     "ru": "Блок 3: Планировочные решения"
+                    },
+                    "description": {
+                     "ru": "Уточним моменты по интерьеру"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "expression",
+                    "name": "question22",
+                    "title": {
+                     "ru": "Прихожая:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question18",
+                    "title": {
+                     "ru": "Хранение одежды"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Открытое"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Закрытое"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Комбинированное"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question19",
+                    "title": {
+                     "ru": "Тип напольного покрытия"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Другое (укажите):"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Керамогранит"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question20",
+                    "title": {
+                     "ru": "Ключница"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question21",
+                    "title": {
+                     "ru": "Домофон"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Другое (укажите):"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Обычный"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Видео"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Через приложение"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question23",
+                    "title": {
+                     "ru": "Консоль для хранения мелочи"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question24",
+                    "title": {
+                     "ru": "Мягкая зона"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page4",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question25",
+                    "title": {
+                     "ru": "Кухня:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question26",
+                    "title": {
+                     "ru": "Кухонная зона"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Отдельная"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Студия"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question27",
+                    "title": {
+                     "ru": "Холодильник"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Встроенный"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Отдельно-стоящий"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question28",
+                    "title": {
+                     "ru": "Дополнительная морозильная камера"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question29",
+                    "title": {
+                     "ru": "Вытяжка"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Встроенная"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Отдельностоящая"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question30",
+                    "title": {
+                     "ru": "Варочная плита"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Электрическая"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Газ"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question31",
+                    "title": {
+                     "ru": "Духовой шкаф"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question32",
+                    "title": {
+                     "ru": "Посудомоечная машина"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question33",
+                    "title": {
+                     "ru": "Микроволновая печь"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question34",
+                    "title": {
+                     "ru": "Кофе машина"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "checkbox",
+                    "name": "question35",
+                    "title": {
+                     "ru": "Другая техника"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Можете добавить что-нибудь здесь:"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Электрический чайник"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Тостер"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Мультиварка"
+                      }
+                     },
+                     {
+                      "value": "item4",
+                      "text": {
+                       "ru": "Пароварка"
+                      }
+                     },
+                     {
+                      "value": "item5",
+                      "text": {
+                       "ru": "Блендер"
+                      }
+                     },
+                     {
+                      "value": "item6",
+                      "text": {
+                       "ru": "Соковыжималка"
+                      }
+                     },
+                     {
+                      "value": "item7",
+                      "text": {
+                       "ru": "Хлебопечка"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question36",
+                    "title": {
+                     "ru": "Остров"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Рассмотреть"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question37",
+                    "title": {
+                     "ru": "Барная стойка"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Рассмотреть"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question38",
+                    "title": {
+                     "ru": "Обеденный стол "
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Расскладной"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Не раскладной"
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page5",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question39",
+                    "title": {
+                     "ru": "Гостиная:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question40",
+                    "title": {
+                     "ru": "Диван"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Другое (опишите)"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Прямой"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Угловой"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question41",
+                    "title": {
+                     "ru": "Кресла"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question42",
+                    "title": {
+                     "ru": "Журнальный стол"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question43",
+                    "title": {
+                     "ru": "Стеллажи для хранения"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Открытые"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Закрытые"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question44",
+                    "title": {
+                     "ru": "Телевизор"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question45",
+                    "title": {
+                     "ru": "Проектор"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question46",
+                    "title": {
+                     "ru": "Камин"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question47",
+                    "title": {
+                     "ru": "Лаундж зона"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page6",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question48",
+                    "title": {
+                     "ru": "Спальня супругов:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question49",
+                    "title": {
+                     "ru": "Кровать (размер в см.)"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "140"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "160"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "180"
+                      }
+                     },
+                     {
+                      "value": "item4",
+                      "text": {
+                       "ru": "200"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question50",
+                    "title": {
+                     "ru": "Прикроватные тумбы"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Подвесные"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Напольные"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question51",
+                    "title": {
+                     "ru": "Телевизор"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question52",
+                    "title": {
+                     "ru": "Туалетный столик"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть "
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question53",
+                    "title": {
+                     "ru": "Комод"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть "
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question54",
+                    "title": {
+                     "ru": "Ковер"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть "
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question55",
+                    "title": {
+                     "ru": "Гардероб при спальне"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть "
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question56",
+                    "title": {
+                     "ru": "Ванная комната при спальне"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть "
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page7",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question57",
+                    "title": {
+                     "ru": "Детская спальня:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question58",
+                    "title": {
+                     "ru": "Пол ребенка"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Мальчик"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Девочка"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "text",
+                    "name": "question59",
+                    "title": {
+                     "ru": "Имя"
+                    }
+                   },
+                   {
+                    "type": "text",
+                    "name": "question60",
+                    "title": {
+                     "ru": "Возраст ребенка"
+                    }
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question61",
+                    "title": {
+                     "ru": "Письменный стол"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question62",
+                    "title": {
+                     "ru": "Кровать (размер в см.)"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Можете добавить что-нибудь здесь:"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "90"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "120"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "140"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question63",
+                    "title": {
+                     "ru": "Телевизор"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question64",
+                    "title": {
+                     "ru": "Компьютер"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "ПК"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Ноутбук"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question65",
+                    "title": {
+                     "ru": "Хранение игрушек"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question66",
+                    "title": {
+                     "ru": "Комод"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question67",
+                    "title": {
+                     "ru": "Диван"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question68",
+                    "title": {
+                     "ru": "Кресло"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question69",
+                    "title": {
+                     "ru": "Шкаф"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question70",
+                    "title": {
+                     "ru": "Гардероб при спальне"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "comment",
+                    "name": "question71",
+                    "title": {
+                     "ru": "Увлечения"
+                    }
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page8",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question72",
+                    "title": {
+                     "ru": "Ванная комната:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question73",
+                    "title": {
+                     "ru": "Унитаз"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Подвесной"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Отдельно стоящий"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question74",
+                    "title": {
+                     "ru": "Ванная"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Встроенная"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Отдельно стоящая"
+                      }
+                     },
+                     {
+                      "value": "item3",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question75",
+                    "title": {
+                     "ru": "Душевая"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question76",
+                    "title": {
+                     "ru": "Умывальник"
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Другое (опишите):"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Встроенный"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Раковина-чаша"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question77",
+                    "title": {
+                     "ru": "Полотенцесушитель "
+                    },
+                    "hasComment": true,
+                    "commentText": {
+                     "ru": "Другое (опишите):"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Электрический"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Водяной"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question78",
+                    "title": {
+                     "ru": "Шкаф для хранения"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 },
+                 {
+                  "name": "page9",
+                  "elements": [
+                   {
+                    "type": "expression",
+                    "name": "question79",
+                    "title": {
+                     "ru": "Гардеробная:"
+                    },
+                    "hideNumber": true
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question80",
+                    "title": {
+                     "ru": "Материал"
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Модульного типа (металл)"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Корпусного типа (ЛДСП)"
+                      }
+                     }
+                    ]
+                   },
+                   {
+                    "type": "radiogroup",
+                    "name": "question81",
+                    "title": {
+                     "ru": "Подсветка "
+                    },
+                    "choices": [
+                     {
+                      "value": "item1",
+                      "text": {
+                       "ru": "Есть"
+                      }
+                     },
+                     {
+                      "value": "item2",
+                      "text": {
+                       "ru": "Нет"
+                      }
+                     }
+                    ]
+                   }
+                  ]
+                 }
+                ],
+                "startSurveyText": {
+                 "ru": "Начать тест"
+                },
+                "pagePrevText": {
+                 "ru": "Назад"
+                },
+                "pageNextText": {
+                 "ru": "Далее"
+                },
+                "completeText": {
+                 "ru": "Завершить тест"
+                },
+                "previewText": {
+                 "ru": "Просмотреть "
+                },
+                "editText": {
+                 "ru": "Редактировать"
+                }
+               
+           };
+
 const survey = new Survey.Model(json);
 
         
 
         function saveSurveyToPdf(filename, surveyModel, pdfWidth, pdfHeight) {
-   var options = {
+    var options = {
+        fontSize: 14,
+        margins: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bot: 10
+        },
         format: [pdfWidth, pdfHeight]
     };
     var surveyPDF = new SurveyPDF.SurveyPDF(json, options);
     surveyPDF.data = surveyModel.data;
-    surveyPDF.onRenderQuestion.add(function (survey, options) {
-        if (options.question.name !== "pdf_adorners_bottomdesc") return;
-        var plainBricks = options.bricks[0].unfold();
-        var lastBrick = plainBricks[plainBricks.length - 1];
-        var point = SurveyPDF.SurveyHelper.createPoint(lastBrick);
-        return new Promise(function (resolve) {
-            SurveyPDF.SurveyHelper.createDescFlat(point, options.question,
-                options.controller, 'Some description').then(function (descBrick) {
-                options.bricks.push(descBrick);
-                resolve();
-            });
-        });
-    });
-    surveyPDF.onRenderQuestion.add(function (survey, options) {
-        if (options.question.name !== "pdf_adorners_checkboxasradio") return;
-        var flatRadiogroup = options.repository.create(survey,
-            options.question, options.controller, "radiogroup");
-        return new Promise(function (resolve) {
-            flatRadiogroup.generateFlats(options.point).then(function(radioBricks) {
-                options.bricks = radioBricks;
-                resolve();
-            });
-        });
-     });
-    surveyPDF
-        .onRenderQuestion
-        .add(function (survey, options) {
-            if (options.question.name !== "pdf_adorners_changesize") return;
-            var flatMatrix = options
-                .repository
-                .create(survey, options.question, options.controller, "matrix");
-            var oldFontSize = options.controller.fontSize;
-            options.controller.fontSize = oldFontSize / 2.0;
-            return new Promise(function (resolve) {
-                flatMatrix
-                    .generateFlats(options.point)
-                    .then(function (matrixBricks) {
-                        options.controller.fontSize = oldFontSize;
-                        options.bricks = matrixBricks;
-                        resolve();
-                    });
-            });
-        });
-    surveyPDF
-        .onRenderQuestion
-        .add(function (survey, options) {
-            if (options.question.getType() === "comment") {
-                var htmlQuestion = Survey.QuestionFactory.Instance.createQuestion("html", "html_question");
-                var paragraphs = options.question.value.split("\n");
-                htmlQuestion.html = "";
-                paragraphs.forEach(function(p) { htmlQuestion.html += "<p>" + p + "</p><br>" });
-                var flatHtml = options
-                    .repository
-                    .create(survey, htmlQuestion, options.controller, "html");
-                var commentBricks = options.bricks[0].unfold();
-                var commentBrick = commentBricks.pop();
-                var point = SurveyPDF.SurveyHelper.createPoint(commentBrick, true, true);
-                return new Promise(function (resolve) {
-                    flatHtml
-                        .generateFlats(point)
-                        .then(function (htmlBricks) {
-                            options.bricks = commentBricks;
-                            options.bricks = options.bricks.concat(htmlBricks);
-                            resolve();
-                        });
-                });
-            }
-        });
-    surveyPDF
-        .onRenderQuestion
-        .add(function (survey, options) {
-            if (options.question.name !== "pdf_adorners_selectedchoices") return;
-            var checkboxQuestion = Survey.QuestionFactory.Instance.createQuestion('checkbox', options.question.name + '_checkbox');
-            checkboxQuestion.titleLocation = 'hidden';
-            var selectedChoices = [];
-            options.question.visibleChoices.forEach(function (choice) {
-                if (options.question.isItemSelected(choice)) {
-                    selectedChoices.push(choice.value);
-                }
-            });
-            checkboxQuestion.choices = selectedChoices;
-            var flatCheckbox = options.repository.create(survey, checkboxQuestion, options.controller, 'checkbox');
-            var titleBrick = options.bricks[0].unfold();
-            titleBrick.pop(); titleBrick.pop();
-            titleBrick = new options.module.CompositeBrick(...titleBrick);
-            var point = options.module.SurveyHelper.createPoint(titleBrick, true, false);
-            point.yTop += options.controller.unitHeight / 2.0;
-            return new Promise(function (resolve) {
-                flatCheckbox
-                    .generateFlats(point)
-                    .then(function (checkboxBricks) {
-                        options.bricks = [titleBrick];
-                        options.bricks = options.bricks.concat(checkboxBricks);
-                        resolve();
-                    });
-            });
-        });
     surveyPDF.save(filename);
 }
 document.getElementById("saveToPDFbtn").onclick = function() {
   var pdfWidth = survey.pdfWidth || 210;
-  var pdfHeight = survey.pdfHeight || 297;
+  var pdfHeight = survey.pdfHeight || 297;  
   saveSurveyToPdf("surveyResult.pdf", survey, pdfWidth, pdfHeight);
-  // тут д.б. отправка на почту
 };
+
 
         if (typeof survey === "undefined") return <div></div>;
 
