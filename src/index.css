@@ -11,3 +11,67 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.modal__wrapper{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.modal__wrapper.open {
+  height: 100%;
+  display: block;
+}
+
+.modal__wrapper.close {
+  height: 0%;
+  display: none;
+}
+
+.modal__body {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  margin-top: 5%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal__close {
+text-align: center;
+margin-top: -15px;
+font-size: 40px;
+color: gray;
+cursor: pointer;
+}
+
+.modal__body h2 {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+.modal__body p {
+  text-align: center;
+  width: 100%;
+}
+
+#sendform{
+  background-color: #1ab394;
+  border: none;
+  border-radius: 1.214em;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 0.5em 2.786em 0.6em;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+}

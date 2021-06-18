@@ -4,7 +4,8 @@ import SurveyPdfComponent from './App';
 
 ReactDOM.render(
     <div>
-    <SurveyPdfComponent/>
+        <SurveyPdfComponent />
     </div>,
     document.getElementById('root')
 );
+
